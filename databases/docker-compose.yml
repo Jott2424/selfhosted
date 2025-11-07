@@ -1,43 +1,16 @@
-version: '3.8'
+version: "3.8"
 
-services:
-  mariadb01:
-    image: mariadb:latest
-    container_name: mariadb01
-    restart: unless-stopped
-    environment:
-      MARIADB_ROOT_PASSWORD: admin
-      MARIADB_DATABASE: mariadb
-      MARIADB_USER: mariadb01
-      MARIADB_PASSWORD: mariadb01
-    ports:
-      - "3306:3306"
-    volumes:
-      - /mariadb01/data:/var/lib/mysql
-############################################################################# Postgres #############################################################################
-  postgres01:
-    image: postgres:latest
-    container_name: postgres01
+services: 
+  p_postgres01:
+    image: postgres:17
+    container_name: p_postgres01
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     ports:
-      - "5432:5432"
+      - "17501:5432"
     volumes:
-      - /postgres01/data:/var/lib/postgresql/data
-############################################################################# MySQL #############################################################################
-  mysql01:
-    image: mysql:latest
-    container_name: mysql01
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: mysql
-      MYSQL_USER: mysql01
-      MYSQL_PASSWORD: mysql01
-    ports:
-      - "3406:3306" #mariadb01 uses 3306
-    volumes:
-      - /mysql01/data:/var/lib/mysql
+      - /mnt/PRD/p_databases/p_postgres01/data:/var/lib/postgresql/data
+      - /mnt/Vault/Files/Postgres:/mnt/files
