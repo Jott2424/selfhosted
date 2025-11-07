@@ -11,7 +11,11 @@ services:
       - VERSION=docker
       - TZ=America/New York  # change to your timezone
     volumes:
-      - /mnt/Vault/Media/Plex/config:/config
-      - /mnt/Vault/Media/Shows:/tv
-      - /mnt/Vault/Media/Movies:/movies
+      - "/mnt/Vault/Media/Plex/config:/config"
+      - "/mnt/Vault/Media/Shows:/tv/Adult Shows"
+      - "/mnt/Vault/Media/Kids Shows:/tv/Kids Shows"
+      - "/mnt/Vault/Media/Movies:/Movies/Adult Movies"
+      - "/mnt/Vault/Media/Kids Movies:/Movies/Kids Movies"
+      - "/mnt/Vault/Media/Family Movies:/Movies/Family Movies"
+      - "/mnt/Vault/Media/Home Videos:/Home Videos"
     restart: unless-stopped
