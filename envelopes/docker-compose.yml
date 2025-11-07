@@ -1,0 +1,17 @@
+version: "3.8"
+
+services: 
+  p_envelopes01:
+    image: envelopes:1.1.3
+    container_name: p_envelopes01
+    restart: unless-stopped
+    environment:
+      DB_NAME: envelopes
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_HOST: 192.168.1.3
+      DB_PORT: 17501
+    ports:
+      - "50250:5000"
+    command: >
+      sh -c "python3 /app/Envelopes/app.py init-db && python3 /app/Envelopes/app.py"
