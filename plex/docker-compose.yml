@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  p_plex01:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: p_plex01
+    network_mode: host  # Recommended for DLNA and remote access
+    environment:
+      - PUID=1000           # your user ID (use `id -u` to find it)
+      - PGID=1000           # your group ID (use `id -g` to find it)
+      - VERSION=docker
+      - TZ=America/New York  # change to your timezone
+    volumes:
+      - /mnt/Vault/Media/Plex/config:/config
+      - /mnt/Vault/Media/Shows:/tv
+      - /mnt/Vault/Media/Movies:/movies
+    restart: unless-stopped
