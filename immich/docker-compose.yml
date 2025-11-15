@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  p_immich01:
+    container_name: p_immich01
+    image: ghcr.io/immich-app/immich-server:v2.2.3
+    volumes:
+      - /mnt/Vault/Media/Pictures/Immich/Library:/data
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "50100:2283"
+    depends_on:
+      - p_immich-redis
+      - p_immich-postgres
+    environment:
+      DB_HOSTNAME: p_immich-postgres
+      DB_PORT: 5432
+      DB_USERNAME: immich_user
+      DB_PASSWORD: immich_password
+      DB_DATABASE_NAME: immich
+      REDIS_HOSTNAME: p_immich_redis
+    restart: always
+
+  p_immich-machine-learning:
+    container_name: p_immich_machine_learning
+    image: ghcr.io/immich-app/immich-machine-learning:v2.2.3
+    volumes:
+      - /mnt/Vault/Media/Pictures/Immich/ml-cache:/cache
+    depends_on:
+      - p_immich-redis
+      - p_immich01
+    environment:
+      DB_HOSTNAME: p_immich-postgres
+      DB_PORT: 5432
+      DB_USERNAME: immich_user
+      DB_PASSWORD: immich_password
+      DB_DATABASE_NAME: immich
+      REDIS_HOSTNAME: p_immich_redis
+    restart: always
+
+  p_immich-redis:
+    container_name: p_immich_redis
+    image: redis:6.2-alpine
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  p_immich-postgres:
+    container_name: p_immich_postgres
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+    ports:
+      - "17503:5432"
+    environment:
+      POSTGRES_USER: immich_user
+      POSTGRES_PASSWORD: immich_password
+      POSTGRES_DB: immich
+      POSTGRES_INITDB_ARGS: '--data-checksums'
+
+    volumes:
+      - /mnt/Vault/Media/Pictures/Immich/postgres:/var/lib/postgresql/data
+    restart: always
