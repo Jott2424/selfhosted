@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  calibre:
+    image: linuxserver/calibre:latest
+    container_name: calibre
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - /mnt/Vault/Configs/Calibre/Calibre:/config
+      - /mnt/Vault/Media/Books:/books
+    ports:
+      - 8080:8080   # Calibre content server (optional)
+      - 8081:8081   # Calibre GUI (via browser)
+    restart: unless-stopped
+    
+  calibre-web:
+    image: linuxserver/calibre-web:latest
+    container_name: calibre-web
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - /mnt/Vault/Configs/Calibre/CalibreWeb:/config
+      - /mnt/Vault/Configs/Calibre:/config/calibre
+      - /mnt/Vault/Media/Books:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
