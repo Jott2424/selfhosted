@@ -1,16 +1,16 @@
 version: "3.8"
 
 services:
-  d_minio01:
+  p_minio01:
     image: minio/minio:latest
-    container_name: d_minio01
+    container_name: p_minio01
     ports:
-      - "20100:9000"     # MinIO API
-      - "20101:9001"     # MinIO Console
+      - "50100:9000"     # MinIO API
+      - "50101:9001"     # MinIO Console
     environment:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin
     command: server /data --console-address ":9001"
     volumes:
-      - /mnt/nfs/files/Datalake/dev/Minio/data:/data
+      - /mnt/nfs/files/Datalake/prod/Minio/data:/data
     restart: unless-stopped
