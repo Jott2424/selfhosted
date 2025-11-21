@@ -11,12 +11,12 @@
         - GTX 1070
 
 - Dell R720xd
-    - Runs proxmox to host VMs for spark on kubernetes, redis cache, ML development & training
+    - Runs proxmox to host VMs for spark, ML development & training, minio, etc.
     - Hardware
         - (2) Xeon E5-2697 V2 (12C/24T each)
         - (24) 32 GB DDR3 Ram (768 total)
-        - (2) 120 GB SSD (boot)
-        - (6) 1 TB HDD (vm storage space)
+        - (2) 120 GB SSD (boot - raid 1 - 120GB usable)
+        - (8) 1 TB HDD (vm storage space - raid 10 - 4TB usable)
 
 - Spare Linux PC
     - Runs Omarchy (for now) for daily driving a linux desktop experience
