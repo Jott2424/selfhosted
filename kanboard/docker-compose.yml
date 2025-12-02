@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  p_kanboard01:
+    image: kanboard/kanboard:latest
+    container_name: p_kanboard01
+    ports:
+      - "10001:80"  # Change host port if needed
+    volumes:
+      - /mnt/PRD/p_kanboard/data:/var/www/app/data  # SQLite DB + attachments + plugins
+    restart: unless-stopped
