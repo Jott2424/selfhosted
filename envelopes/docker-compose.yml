@@ -12,7 +12,7 @@ services:
       DB_HOST: 192.168.1.3
       DB_PORT: 17501
     ports:
-      - "50250:5000"
+      - "50250:5001"
     volumes:
       - /mnt/Vault/Files/HomeLab/Portainer/Stacks/envelopes/prod/files:/mnt/files
     command: >
