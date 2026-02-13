@@ -7,5 +7,5 @@ services:
     ports:
       - "10101:80"  # Change host port if needed
     volumes:
-      - /mnt/Vault/Files/HomeLab/Portainer/Stacks/project_management/prod/kanboard01/data:/var/www/app/data  # SQLite DB + attachments + plugins
+      - /mnt/Vault/Homelab/Portainer/Stacks/ProjectManagement/prod/kanboard01/data:/var/www/app/data  # SQLite DB + attachments + plugins
     restart: unless-stopped
