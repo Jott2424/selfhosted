@@ -12,5 +12,5 @@ services:
     ports:
       - "17501:5432"
     volumes:
-      - /mnt/Vault/HomeLab/Portainer/Stacks/Databases/prod/postgres01/data:/var/lib/postgresql/data
-      - /mnt/Vault/HomeLab/Portainer/Stacks/Databases/prod/postgres01/files:/mnt/files
+      - /mnt/Vault/Homelab/Portainer/Stacks/Databases/prod/postgres01/data:/var/lib/postgresql/data
+      - /mnt/Vault/Homelab/Portainer/Stacks/Databases/prod/postgres01/files:/mnt/files

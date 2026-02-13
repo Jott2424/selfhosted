@@ -14,6 +14,6 @@ services:
     ports:
       - "50250:5001"
     volumes:
-      - /mnt/Vault/Files/HomeLab/Portainer/Stacks/envelopes/prod/files:/mnt/files
+      - /mnt/Vault/Homelab/Portainer/Stacks/Envelopes/prod/files:/mnt/files
     command: >
       sh -c "python3 /app/Envelopes/app.py init-db && python3 /app/Envelopes/app.py"
