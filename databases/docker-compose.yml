@@ -14,3 +14,17 @@ services:
     volumes:
       - /mnt/Vault/Homelab/Portainer/Stacks/Databases/prod/postgres01/data:/var/lib/postgresql/data
       - /mnt/Vault/Homelab/Portainer/Stacks/Databases/prod/postgres01/files:/mnt/files
+  
+  p_postgres02:
+    image: postgres:18
+    container_name: p_postgres02
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "17502:5432"
+    volumes:
+      - /mnt/Vault/Homelab/Portainer/Stacks/Databases/prod/postgres02/data:/var/lib/postgresql
+      - /mnt/Vault/Homelab/Portainer/Stacks/Databases/prod/postgres02/files:/mnt/files
