@@ -1,0 +1,29 @@
+# Copy this file to terraform.tfvars and fill in your real values.
+# terraform.tfvars is gitignored — never commit real secrets.
+
+proxmox_api_token = "root@pam!terraform=00000000-0000-0000-0000-000000000000"
+target_node        = "r630"
+template_vm_id      = 9000
+storage_pool        = "datalake"
+network_bridge      = "vmbr0"
+
+ssh_public_key = "ssh-ed25519 AAAA... your-key-comment"
+
+vm_gateway = "192.168.1.1"
+
+vms = {
+  postgres = {
+    name       = "postgres"
+    cpu_cores  = 4
+    memory     = 8192
+    disk_size  = 50
+    ip_address = "192.168.1.51/24"
+  }
+  some_other_vm = {
+    name       = "some-other-vm"
+    cpu_cores  = 2
+    memory     = 2048
+    disk_size  = 20
+    ip_address = "dhcp"
+  }
+}
