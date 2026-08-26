@@ -8,10 +8,14 @@
 | [databases](databases) | Shared Postgres instances used by other stacks below |
 | [datalake](datalake) | Data lake / warehouse infra (MinIO, Unity Catalog, Spark) on the R720xd |
 | [envelopes](envelopes) | My own envelope-budgeting app |
+| [gramps](gramps) | Gramps Web — genealogy / family tree software |
+| [home-assistant](home-assistant) | Home Assistant — home automation platform |
 | [immich](immich) | Self-hosted photo/video backup |
+| [movie-inventory](movie-inventory) | My own app for cataloguing my movie & show collection |
 | [plex](plex) | Plex media server |
 | [project_management](project_management) | Kanboard, for personal project tracking |
 | [proxmox-vms](proxmox-vms) | Terraform provisioning for VMs on the R630 (Postgres + Pokémon battle simulation nodes) |
+| [tailscale](tailscale) | Tailscale subnet router for remote access to the homelab LAN |
 
 Each folder has its own `docker-compose.yml` and is deployed as an independent stack (mostly through Portainer on the boxes below), except `proxmox-vms`, which uses Terraform to provision the VMs themselves.
 
