@@ -1,0 +1,42 @@
+services:
+  app:
+    image: movie-inventory:1.0.1
+    restart: unless-stopped
+    container_name: p_movie_inventory
+    environment:
+      # Postgres — existing dev server on the TrueNAS box, dedicated database on it
+      POSTGRES_DB: "movie_inventory"
+      POSTGRES_USER: "movie_inventory"
+      POSTGRES_PASSWORD: "movie_inventory"
+      POSTGRES_HOST: "192.168.1.3"
+      POSTGRES_PORT: "17501"
+
+      # TMDb (https://www.themoviedb.org/settings/api)
+      TMDB_API_KEY: ""
+
+      ANTHROPIC_API_KEY: ""
+
+      # Plex
+      PLEX_BASEURL: "http://192.168.1.3:32400"
+      PLEX_TOKEN: ""
+
+      # Path inside the container where the SMB share is mounted (see the volumes below)
+      SMB_MOUNT_PATH: "/mnt/media"
+
+      # Path inside the container where OCR-uploaded case photos are stored (see the
+      # volumes below, which bind-mount a host directory to this path). Rarely needs to change.
+      UPLOAD_DIR: "/app/uploads"
+
+      # Path inside the container where downloaded TMDb poster images are cached (see the
+      # volumes below, which bind-mount a host directory to this path). Rarely needs to change.
+      POSTER_CACHE_DIR: "/app/poster_cache"
+    ports:
+      - "55000:5000"
+    volumes:
+      - /mnt/Vault/Homelab/Portainer/Stacks/MovieInventory/prod/uploads:/app/uploads
+      - /mnt/Vault/Homelab/Portainer/Stacks/MovieInventory/prod/poster_cache:/app/poster_cache
+      - /mnt/Vault/Media/Movies:/mnt/media/movies/Movies:ro
+      - /mnt/Vault/Media/Kids Movies:/mnt/media/movies/Kids Movies:ro
+      - /mnt/Vault/Media/Family Movies:/mnt/media/movies/Family Movies:ro
+      - /mnt/Vault/Media/Kids Shows:/mnt/media/shows/Kids Shows:ro
+      - /mnt/Vault/Media/Shows:/mnt/media/shows/Shows:ro
