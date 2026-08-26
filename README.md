@@ -38,8 +38,3 @@ Each folder has its own `docker-compose.yml` and is deployed as an independent s
         - (24) 32 GB DDR4 Ram (768 total)
         - (2) 480 GB SSD (boot - raid 1 - 120GB usable)
         - (8) 1 TB HDD (vm storage space - raid 10 - 4TB usable)
-
-- Spare Linux PC
-    - Runs Omarchy (for now) for daily driving a linux desktop experience
-    1. Ryzen 5 5600G
-    2. 32GB Ram
