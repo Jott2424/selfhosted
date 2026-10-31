@@ -1,6 +1,6 @@
 services:
   p_plex01:
-    image: PASTE_DIGEST_HERE
+    image: lscr.io/linuxserver/plex@sha256:01a53d9c7adcbb3701fbb0a4230c0a37c85453759b6b05a67356c3c7a09de08d
     container_name: p_plex01
     ports:
       - "192.168.1.3:32400:32400"
