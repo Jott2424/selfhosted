@@ -1,21 +1,24 @@
-version: "3.9"
-
 services:
   p_plex01:
-    image: lscr.io/linuxserver/plex:latest
+    image: PASTE_DIGEST_HERE
     container_name: p_plex01
-    network_mode: host  # Recommended for DLNA and remote access
+    ports:
+      - "192.168.1.3:32400:32400"
     environment:
-      - PUID=1000           # your user ID (use `id -u` to find it)
-      - PGID=1000           # your group ID (use `id -g` to find it)
+      - PUID=1000
+      - PGID=1000
       - VERSION=docker
-      - TZ=America/New York  # change to your timezone
+      - TZ=America/New_York
+      - PLEX_CLAIM=${PLEX_CLAIM}
+      - ADVERTISE_IP=http://192.168.1.3:32400/
     volumes:
       - "/mnt/Vault/Media/Plex/config:/config"
-      - "/mnt/Vault/Media/Shows:/tv/Adult Shows"
-      - "/mnt/Vault/Media/Kids Shows:/tv/Kids Shows"
-      - "/mnt/Vault/Media/Movies:/Movies/Adult Movies"
-      - "/mnt/Vault/Media/Kids Movies:/Movies/Kids Movies"
-      - "/mnt/Vault/Media/Family Movies:/Movies/Family Movies"
-      - "/mnt/Vault/Media/Home Videos:/Home Videos"
+      - "/mnt/Vault/Media/Shows:/tv/Adult Shows:ro"
+      - "/mnt/Vault/Media/Kids Shows:/tv/Kids Shows:ro"
+      - "/mnt/Vault/Media/Movies:/Movies/Adult Movies:ro"
+      - "/mnt/Vault/Media/Kids Movies:/Movies/Kids Movies:ro"
+      - "/mnt/Vault/Media/Family Movies:/Movies/Family Movies:ro"
+      - "/mnt/Vault/Media/Home Videos:/Home Videos:ro"
+    security_opt:
+      - no-new-privileges:true
     restart: unless-stopped
