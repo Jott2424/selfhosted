@@ -1,6 +1,6 @@
 services:
   frigate:
-    container_name: d_frigate
+    container_name: p_frigate
     image: ghcr.io/blakeblackshear/frigate:stable
     restart: unless-stopped
     stop_grace_period: 30s
