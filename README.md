@@ -12,6 +12,7 @@
 | [frigate](frigate) | Frigate — NVR with local AI object detection |
 | [home-assistant](home-assistant) | Home Assistant — home automation platform |
 | [immich](immich) | Self-hosted photo/video backup |
+| [mosquitto](mosquitto) | Mosquitto — MQTT message broker |
 | [movie-inventory](movie-inventory) | My own app for cataloguing my movie & show collection |
 | [plex](plex) | Plex media server |
 | [project_management](project_management) | Kanboard, for personal project tracking |

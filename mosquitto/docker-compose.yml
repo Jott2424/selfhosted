@@ -1,0 +1,14 @@
+services:
+  mosquitto:
+    container_name: p_mosquitto
+    image: eclipse-mosquitto:2
+    restart: unless-stopped
+    environment:
+      TZ: America/New_York
+    volumes:
+      - /mnt/Vault/Homelab/Portainer/Stacks/Mosquitto/prod/config:/mosquitto/config
+      - /mnt/Vault/Homelab/Portainer/Stacks/Mosquitto/prod/data:/mosquitto/data
+      - /mnt/Vault/Homelab/Portainer/Stacks/Mosquitto/prod/log:/mosquitto/log
+    ports:
+      - "51883:1883"    # MQTT
+      - "59001:9001"    # MQTT over WebSockets
