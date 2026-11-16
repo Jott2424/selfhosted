@@ -2,14 +2,16 @@ version: "3.9"
 
 services:
   homeassistant:
-    container_name: d_homeassistant
+    container_name: p_homeassistant
     image: lscr.io/linuxserver/homeassistant:latest
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=etc/UTC
     volumes:
-      - /mnt/Vault/Homelab/Portainer/Stacks/HomeAssistant/dev/config:/config
+      - /mnt/Vault/Homelab/Portainer/Stacks/HomeAssistant/prod/config:/config
     restart: unless-stopped
-    network_mode: host
+    # Web UI available at http://<host-ip>:58123
+    ports:
+      - "58123:8123"
     privileged: true
