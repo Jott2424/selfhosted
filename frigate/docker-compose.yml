@@ -1,0 +1,24 @@
+services:
+  frigate:
+    container_name: d_frigate
+    image: ghcr.io/blakeblackshear/frigate:stable
+    restart: unless-stopped
+    stop_grace_period: 30s
+    privileged: true
+    shm_size: "512mb"
+    environment:
+      TZ: America/New_York
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/Vault/Homelab/Portainer/Stacks/Frigate/prod/config:/config
+      - /mnt/Vault/Homelab/Portainer/Stacks/Frigate/prod/storage:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    ports:
+      - "58971:8971"
+      # - "55000:5000" #unauthenticated
+      - "58554:8554"
+      - "58555:8555/tcp"
+      - "58555:8555/udp"

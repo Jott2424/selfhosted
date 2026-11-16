@@ -9,6 +9,7 @@
 | [datalake](datalake) | Data lake / warehouse infra (MinIO, Unity Catalog, Spark) on the R720xd |
 | [envelopes](envelopes) | My own envelope-budgeting app |
 | [gramps](gramps) | Gramps Web — genealogy / family tree software |
+| [frigate](frigate) | Frigate — NVR with local AI object detection |
 | [home-assistant](home-assistant) | Home Assistant — home automation platform |
 | [immich](immich) | Self-hosted photo/video backup |
 | [movie-inventory](movie-inventory) | My own app for cataloguing my movie & show collection |
