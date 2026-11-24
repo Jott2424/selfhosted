@@ -17,5 +17,5 @@ services:
       - "58888:8888"  # filer UI / HTTP file API
       - "59333:9333"  # master UI (cluster status, volumes)
     volumes:
-      - /mnt/seaweedfs/prod/data:/data  # use local disk, not NFS (see README)
-      - /mnt/seaweedfs/prod/s3.json:/etc/seaweedfs/s3.json:ro  # S3 credentials, not committed (see s3.json.example)
+      - /mnt/Vault/Homelab/Portainer/Stacks/seaweedfs/prod/data:/data  # use local disk, not NFS (see README)
+      - /mnt/Vault/Homelab/Portainer/Stacks/seaweedfs/prod/s3.json:/etc/seaweedfs/s3.json:ro  # S3 credentials, not committed (see s3.json.example)
