@@ -1,0 +1,26 @@
+services:
+  p_vault:
+    image: hashicorp/vault:1.18
+    container_name: p_vault
+    restart: unless-stopped
+    command: server  # runs with the config below (not dev mode)
+    ports:
+      - "58200:8200"  # host:docker
+    cap_add:
+      - IPC_LOCK  # lets Vault mlock memory so secrets aren't swapped to disk
+    environment:
+      VAULT_ADDR: "http://127.0.0.1:8200"
+      VAULT_LOCAL_CONFIG: |
+        ui = true
+        disable_mlock = false
+        api_addr = "http://0.0.0.0:8200"
+        listener "tcp" {
+          address     = "0.0.0.0:8200"
+          tls_disable = 1  # plain HTTP: only expose over LAN/Tailscale or behind a TLS reverse proxy
+        }
+        storage "file" {
+          path = "/vault/file"
+        }
+    volumes:
+      - /mnt/Vault/Homelab/Portainer/Stacks/Vault/prod/file:/vault/file  # persist encrypted secret data
+      - /mnt/Vault/Homelab/Portainer/Stacks/Vault/prod/logs:/vault/logs

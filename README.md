@@ -17,7 +17,9 @@
 | [plex](plex) | Plex media server |
 | [project_management](project_management) | Kanboard, for personal project tracking |
 | [proxmox-vms](proxmox-vms) | Terraform provisioning for VMs on the R630 (Postgres + Pokémon battle simulation nodes) |
+| [seaweedfs](seaweedfs) | SeaweedFS — S3-compatible object store, the MinIO replacement |
 | [tailscale](tailscale) | Tailscale subnet router for remote access to the homelab LAN |
+| [vault](vault) | HashiCorp Vault — secrets manager my other projects call over an API |
 
 Each folder has its own `docker-compose.yml` and is deployed as an independent stack (mostly through Portainer on the boxes below), except `proxmox-vms`, which uses Terraform to provision the VMs themselves.
 
